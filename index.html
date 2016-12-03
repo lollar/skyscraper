@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SkyScraper</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  </head>
+    <body>
+    <h1 class="air-quality">One or more values missing...</h1>
+      <h2 class='date-updated'><em>Updated on: <span class='update-date'>June 06, 2016</span></em></h2>
+    <div class='county-options'></h2>
+      <select class='counties'>
+        <option disabled selected value> - Select a County - </option>
+        <option value='be'>Box Elder</option>
+        <option value='ca'>Cache</option>
+        <option value='cr'>Carbon</option>
+        <option value='da'>Davis</option>
+        <option value='du'>Duchesne</option>
+        <option value='sl'>Salt Lake</option>
+        <option value='to'>Tooele</option>
+        <option value='ui'>Uintah</option>
+        <option value='ut'>Utah</option>
+        <option value='wa'>Washington</option>
+        <option value='we'>Weber</option>
+      </select>
+    </div>
+    <div class="data-display">
+      <div class="display-box display-box-particulates">
+        <h2 class="display-box-value"></h2>
+        <span class="display-box-units">µg/m3</span>
+        <span class="display-box-type">Particulate Matter</span>
+      </div>
+      <div class="display-box display-box-ozone">
+        <h2 class="display-box-value"></h2>
+        <span class="display-box-units">ppm</span>
+        <span class="display-box-type">Ozone</span>
+      </div>
+      <div class="display-box display-box-temp">
+        <h2 class="display-box-value"></h2>
+        <span class="display-box-units">degrees</span>
+        <span class="display-box-type">Temperature</span>
+      </div>
+      <div class="display-box display-box-wind">
+        <h2 class="display-box-value"></h2>
+        <span class="display-box-units">mph</span>
+        <span class="display-box-type">Wind</span>
+      </div>
+    </div>
+    <div class="chart-display">
+      <canvas class="particulate-chart">Get a new mofo'n browser</canvas>
+      <canvas class="aqi-chart">Get a new mofo'n browser</canvas>
+      <canvas class="ozone-chart">Get a new mofo'n browser</canvas>
+    </div>
+  </body>
+  <script src='js/air_utah.js'></script>
+  <script src='js/chart_data.js'></script>
+  <script type="text/javascript">
+    $(document).ready( function() {
+      d3.csv("csv/air_utah_values.csv", function(data) {
+        AirUtah(data);
+      });
+    });
+  </script>
+</html>
